@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #E7E5E6; /* Grey background */
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+h2, span {
+    display: block;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.warning-box {
+    border: 1px solid #ffc107; /* Bootstrap's warning color */
+    background-color: #fff3cd; /* Light yellow background */
+    color: #856404; /* Dark yellow text color */
+    padding: 10px;
+    margin-top: 20px; /* Space above the box */
+    margin-bottom: 20px; /* Space below the box */
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.form-section {
+    display: flex; /* This will create a flex container */
+    justify-content: space-between; /* This will space out the children (label-input pairs) */
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+}
+
+.form-column {
+    flex-basis: 48%; /* Each column takes up roughly half the space, adjust the percentage as needed */
+    margin-bottom: 10px; /* Adds some space between the rows */
+}
+
+/* Full-width blue line with added padding for whitespace */
+.full-width-blue-line {
+    width: 100%; /* Full width */
+    height: 4px; /* Height of the blue line */
+    background-color: #007bff; /* Bootstrap primary blue */
+    margin: 20px 0; /* Top and bottom margin for whitespace */
+}
+
+/* Section heading style */
+.section-heading {
+    font-size: 18px; /* Larger font size for the heading */
+    color: #333; /* Color for the heading */
+    padding: 10px 0; /* Top and bottom padding */
+    margin: 0; /* Remove default margins */
+    background-color: #f9f9f9; /* Background color for the heading */
+    border-bottom: 2px solid #ddd; /* Bottom border for definition */
+}
+/* Adjust the width of select elements if necessary */
+select {
+    width: 100%; /* Ensure full width within its column */
+}
+.blue-line {
+    height: 4px; /* Height of the blue line */
+    background-color: #007bff; /* Bootstrap primary blue */
+    margin-bottom: 20px; /* Space below the line */
+}
+
+input[type="text"], input[type="email"], textarea, input[type="date"] {
+    width: calc(100% - 20px); /* Adjust width */
+    padding: 5px;
+    font-size: 12px; /* Smaller font size */
+    margin-top: 1px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px; /* Rounded corners */
+}
+label {
+    display: block; /* Makes the label take up the full width of its container */
+    margin-top: 5px;
+    margin-bottom: 5px; /* Adds a small space between the label and input/textarea */
+}
+
+.blue-header {
+    background-color: white; /* Changed to white */
+    color: #000000; /* Adjusted text color for better contrast */
+    padding: 10px; /* Adjust as necessary */
+    display: flex;
+    justify-content: space-between; /* Keep items on the sides */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #ddd;
+}
+
+.container label {
+    font-weight: bold;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header div:not(.logo) {
+    flex-grow: 1;
+    text-align: left; /* Align text to the left */
+    order: 1; /* Order used to position the text on the left */
+}
+
+.header .logo {
+    background-image: url('logo.png');
+    background-size: 100px; /* Size of the logo */
+    background-repeat: no-repeat;
+    background-position: right top; /* Position the logo to the right top */
+    width: 100%; /* Take full width to push other content to left */
+    height: 120px; /* Height of the logo area */
+    order: 2; /* Order used to position the logo on the right */
+}
+
+.header span {
+    font-size: 0.9em; /* Adjust font size for the smaller text */
+}
+
+/* Style for sample table rows */
+.sample-row input {
+    width: auto; /* Auto width based on content */
+    margin: 0 5px; /* Space between inputs */
+    border-radius: 5px; /* Slightly rounded */
+}
+
+/* Add some styles for buttons */
+.add-sample-btn, .submit-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners */
+}
+
+.db-status {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.db-status-light {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: gray; /* Default color */
+}
+
+/* Green light for connected status */
+.db-status-connected {
+    background-color: green;
+}

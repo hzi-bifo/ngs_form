@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online NGS Order Form (beta)</title>
+    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='db_status.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+ <!-- Database Connection Status -->
+ <div id="db-status" class="db-status">
+    <span id="db-status-light" class="db-status-light"></span>
+    <span id="db-status-message">Checking database connection...</span>
+</div>
+
+
+    <div class="bg-white p-5 flex justify-between items-start border-b-4 border-blue-800">
+        <div class="space-y-1">
+            <h2 class="text-lg text-gray-800">Online NGS Order Form (beta)</h2>
+            <span class="text-sm text-gray-600">Version: V-07-20-O1</span>
+        </div>
+        <div class="bg-contain bg-no-repeat h-24 w-full" style="background-image: url('logo.png');"></div>
+        <div class="text-right">
+            <h2 class="text-lg text-gray-800">Helmholtz Centre for Infection Research</h2>
+            <span class="text-sm text-gray-600">Genome Analytics (GMAK) | Inhoffenstraße 7 | 38124 Braunschweig</span>
+        </div>
+    </div>
+
+    <div class="bg-gray-200 p-5 border border-gray-300">
+        <div class="form-section">
+            <div class="form-column">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+
+                <label for="billing-address">Billing address:</label>
+                <textarea id="billing-address" name="billing-address"></textarea>
+
+                <label for="ag-and-hzi">AG and HZI-Kostenträger:</label>
+                <input type="text" id="ag-and-hzi" name="ag-and-hzi">
+            </div>
+
+            <div class="form-column">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" value="2023-11-03"><br>
+
+                <label for="quote-no">Quote No:</label>
+                <input type="text" id="quote-no" name="quote-no">
+
+                <label for="contact-phone">Contact/phone:</label>
+                <input type="text" id="contact-phone" name="contact-phone">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="data-delivery">Data delivery to:</label>
+                <input type="text" id="data-delivery" name="data-delivery">
+
+                <label for="signature">Signature (cost manager):</label>
+                <input type="text" id="signature" name="signature">
+            </div>
+
+        </div>
+    </div>
+        <div class="bg-gray-200 p-5 border border-gray-300">
+
+
+        <!-- Tailwind CSS alert box -->
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+            <p>Complete only for simple sample QC!</p>
+        </div>
+
+
+        <div class="form-section">
+
+
+            <label for="dna">Title of experiment:</label>
+            <input type="text" id="title" name="experiment_title"><br>
+
+            <label for="dna">DNA:</label>
+            <select id="dna" name="dna">
+                <option value="gDNA">gDNA/BAC</option>
+                <option value="amplicon">Amplicon</option>
+                <option value="cDNA">cDNA</option>
+                <option value="chipDNA">ChIP-DNA</option>
+                <option value="otherDNA">Other DNA</option>
+            </select>
+            
+            <label for="rna">RNA:</label>
+            <select id="rna" name="rna">
+                <option value="totalRNA">Total RNA</option>
+                <option value="mRNA">mRNA</option>
+                <option value="ffpeRNA">FFPE-RNA</option>
+                <option value="otherRNA">Other RNA</option>
+            </select>
+            
+            <label for="library">Library:</label>
+            <select id="library" name="library">
+                <option value="readyToSequence">Ready to sequence</option>
+                <!-- Add other options as needed -->
+            </select>
+            
+            <label for="method">Which method?</label>
+            <input type="text" id="method" name="method"><br>
+
+            <label for="buffer">Buffer:</label>
+            <input type="text" id="buffer" name="buffer"><br>
+
+            <label for="organism">Organism/cell type:</label>
+            <input type="text" id="organism" name="organism"><br>
+
+            <label for="isolated-from">Isolated from?</label>
+            <input type="text" id="isolated-from" name="isolated-from"><br>
+
+            <label for="isolation-method">Isolation method:</label>
+            <input type="text" id="isolation-method" name="isolation-method"><br>
+        </div>
+        <div id="sample-section" class="mt-5">
+            <h3 class="text-lg font-semibold">Add Samples</h3>
+            <table id="sample-table" class="min-w-full divide-y divide-gray-200 mt-3">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2">Sample Name</th>
+                        <th class="px-4 py-2">Concentration</th>
+                        <th class="px-4 py-2">Vol.</th>
+                        <th class="px-4 py-2">260/280 Ratio</th>
+                        <th class="px-4 py-2">A260/230</th>
+                        <th class="px-4 py-2">Comments</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically added rows will appear here -->
+                </tbody>
+            </table>
+            <button onclick="addSampleRow()" class="mt-3 py-2 px-4 bg-blue-500 text-white rounded">Add Sample</button>
+        </div>
+                
+
+    </div>
+
+    <input type="button" value="Submit" onclick="serializeSamplesAndSubmit()">
+
+</body>
+
+</html>
